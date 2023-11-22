@@ -1,69 +1,64 @@
-plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+package com.example.myapplication
+import kotlin.math.pow
+
+const val PI=3.1416f
+const val PHI=1.1618f
+fun circleArea(radius:Float):Float{
+    return PI*radius.pow(2)
+}
+fun printPhi(){
+    println("El numero aureo vale $PHI")
+}
+fun getPI():Float{
+    return PI
 }
 
-android {
-    namespace = "com.example.dosdeasada"
-    compileSdk = 33
-
-    defaultConfig {
-        applicationId = "com.example.dosdeasada"
-        minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
+//funciones locales
+fun login(user: String,password: String) : Boolean{
+    fun validate(input: String): Boolean {
+        if(input.isEmpty()){
+            return false
         }
+        return true
     }
+    val userValidated = validate(user)
+    val passValidated = validate(password)
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
+    return userValidated && passValidated
+}
+fun rectangleArea (base:Double =20.0, height:Double= 30.0): Double{
+    return base*height
+}
+fun prismaVolumen (area:Double, fondo:Double){
+    val volumen=area*fondo
+    println("EL volumen del prisma es $volumen")
+
+}
+fun imprimir(
+    valor: String ="Este es el primer valor por defecto",
+    valor2: String = "Este es el segundo valor por defecto"){
+    println(valor)
+    println(valor2)
 }
 
-dependencies {
-
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation("androidx.activity:activity-compose:1.7.2")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+fun promedio(
+    valor: Float =10.0f,
+    valor2: Float = 8.0f,
+    valor3:Float):Float{
+    return ((valor+valor2+valor3)/3f)
 }
+
+fun main(){
+    val radius=4f
+    val area = circleArea(radius)
+    println("El area del circulo es: $area")
+    println("EL valor de pi es "+ getPI())
+    printPhi()
+    val userValidated = login("juanito","Navaja")//utilizar la funcion login y guardar el resultado en una variable
+    println("Usuario loggeado? $userValidated")//imprimir si el usuario estan ingicando
+    println("Area con los valores por defecto es igual a: ${rectangleArea()}")
+    prismaVolumen(rectangleArea(),4.4)
+    imprimir("remplazo del primer valor")
+    imprimir("Remplazo del pirmer valor,","Remplazo del segundo valor")
+    println(promedio(valor3 = 8.0f))
+}}

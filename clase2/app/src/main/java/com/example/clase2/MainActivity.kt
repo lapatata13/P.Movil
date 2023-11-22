@@ -79,7 +79,7 @@ fun promedio(
     }
 
 }*/
-fun tipotringulo(){
+/*fun tipotringulo(){
     print("Ingresa la primer medida del lado 1")
     val lad1 = readLine()?.toInt()
     print("Ingresa la segunda medida del lado 2)")
@@ -104,8 +104,19 @@ fun tipotringulo(){
             println("el tirangulo que tienes es escaleno")
         }
     }
-}
+}*/
+/*val nombres = listOf(
+    "kirby",
+    "Ness",
+    "Fox",
+    "Luigi",
+    "Mario",
+    "Link",
+    "Yoshi"
+)*/
+
 fun main(){
+    var contador=0
     val radius=4f
     val area = circleArea(radius)
     println("El area del circulo es: $area")
@@ -121,6 +132,61 @@ fun main(){
     //clase del dia 21
    //verifyAge()
     //gradoEscolar()
-    tipotringulo()
+    //tipotringulo()
+   val nombres = listOf(
+        "kirby",
+        "Ness",
+        "Fox",
+        "Luigi",
+        "Mario",
+        "Link",
+        "Yoshi",
+        "Fox",
+        "Fox",
+        "Juan"
+    )
+
+    /*for (nombre in nombres){
+        println(nombre)
+        if (nombre=="Fox"){
+            contador++
+            println("el nombre se repite"+contador+"veces")
+
+        }
+    }
+    nombres.forEach{println(it)}
+
+   var x = 20
+    while (x > 0){
+        println(x)
+        x --
+    }*/
+    println("numeros de elementos: ${nombres.size}")
+    println("segundo elemento: ${nombres.get(1)}")
+    println("cuarto elemento: ${nombres[3]}")
+    println("Ultimo elemntos: ${nombres.get(nombres.size - 1)}")
+    println("index del elemnto \"Mario\": ${nombres.indexOf("Mario")}")
+
+    val num = mutableListOf(1, 2, 3, 4)
+    //agrega elemento
+    num.add(5)
+    //remover elemtos
+    num.removeAt(1)
+    //modificar elemtos
+    num[0]= 0
+    println(num)
+
+    val numSet: Set<Int> = setOf(0,1,2,3,4,5)
+    val reverseNumSet: Set<Int> = setOf(5,4,3,2,1,0)
+    //se crea un mutable
+    val names: Set<String> = mutableSetOf("Nombre 1", "Nombre 2")
+    println(numSet)
+
+    val namesToAges: Map<String, Int> = mapOf("user_one" to 20, "user_two" to 23)
+    for ((Key, value)in namesToAges){
+        println("$Key tiene $value años")
+    }
+
+
 
 }
